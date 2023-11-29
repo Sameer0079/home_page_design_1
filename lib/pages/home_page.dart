@@ -4,14 +4,19 @@ import 'package:flutter/material.dart';
 class HomePage extends StatelessWidget {
   HomePage({super.key});
   double? _deviceHeight, _deviceWidth;
+  ScrollController? _scrollController;
 
   @override
   Widget build(BuildContext context) {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
+    _scrollController = ScrollController();
+
     return Scaffold(
       appBar: _appBar(),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        controller: _scrollController,
         child: Container(
             height: _deviceHeight,
             margin: EdgeInsets.symmetric(horizontal: _deviceWidth! * .05),
@@ -380,6 +385,7 @@ class HomePage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(bottom: 8.0),
         child: GridView.builder(
+            controller: _scrollController,
             itemCount: _menuItems.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
