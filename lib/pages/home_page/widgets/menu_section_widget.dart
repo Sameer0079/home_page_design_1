@@ -75,27 +75,25 @@ class HomePageMenuSection extends StatelessWidget {
     ];
 
     return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 8.0),
-        child: Scrollbar(
-          controller: scrollController,
-          radius: const Radius.circular(3.0),
-          thickness: 2.0,
-          child: GridView.builder(
-              itemCount: _menuItems.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                mainAxisSpacing: _deviceWidth! * .03,
-                crossAxisSpacing: _deviceWidth! * .03,
-              ),
-              itemBuilder: (BuildContext ctx, int index) {
-                return _menuContent(
-                  Color(_menuItems[index]['color']),
-                  _menuItems[index]['name'],
-                  _menuItems[index]['image'],
-                );
-              }),
-        ),
+      child: Scrollbar(
+        controller: scrollController,
+        radius: const Radius.circular(3.0),
+        thickness: 2.0,
+        child: GridView.builder(
+            padding: const EdgeInsets.only(bottom: 10),
+            itemCount: _menuItems.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              mainAxisSpacing: _deviceWidth! * .03,
+              crossAxisSpacing: _deviceWidth! * .03,
+            ),
+            itemBuilder: (BuildContext ctx, int index) {
+              return _menuContent(
+                Color(_menuItems[index]['color']),
+                _menuItems[index]['name'],
+                _menuItems[index]['image'],
+              );
+            }),
       ),
     );
   }

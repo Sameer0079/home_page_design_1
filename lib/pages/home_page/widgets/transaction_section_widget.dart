@@ -31,6 +31,7 @@ class HomePageTransactionSection extends StatelessWidget {
 
   Widget _transactionType({required IconData icon, required Color color}) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'Harga Beli Saat ini/g',
